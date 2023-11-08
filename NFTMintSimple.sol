@@ -1,11 +1,11 @@
 // SPDX-Licence-idintifier:MIT 
-pragma solidity ^0.8.0;
 
+pragma solidity ^0.8.10;
 
-    import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
-    import '@openzeppelin/contracts/access/Ownable.sol';
+    import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+    import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Mintnft is ERC721, Ownable {
+contract Mintnft is ERC721, Ownable (address(this)){
    
     uint256 public mintprice = 0.05 ether;
     uint256 public totalsupply;
@@ -18,7 +18,7 @@ contract Mintnft is ERC721, Ownable {
         MaxSupply = 20;
     }
 
-    function toggleisMintEnabled() external  onlyOwner() {
+    function toggleisMintEnabled() public    onlyOwner() {
         isMintEnable = !isMintEnable;
     }
 
@@ -38,4 +38,5 @@ contract Mintnft is ERC721, Ownable {
         _safeMint (msg.sender , tokenid);
 
     }
+}
 }
