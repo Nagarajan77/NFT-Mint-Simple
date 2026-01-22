@@ -43,19 +43,8 @@ contract Mintnft is ERC721, Ownable (address(this)){
 }
 
 
-    function mint() external payable {
-        require(isMintEnable,"mint not enable");
-        require(mintedWallets[msg.sender] <1 , "Mint max per wallet");
-        require(msg.value == mintprice ,"Wrong value");
-        require(MaxSupply > totalsupply , "Sold out");
-        mintedWallets[msg.sender]++;
-        totalsupply++;
-        uint tokenid = totalsupply;
-        _safeMint (msg.sender , tokenid);
 
-    }
-}
-}
+
 
 
 
